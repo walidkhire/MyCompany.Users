@@ -1,5 +1,8 @@
 <Solution>
-  <Folder Name="/BackEnd/" />
+  <Folder Name="/BackEnd/">
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+  </Folder>
   <Folder Name="/BackEnd/docker/">
     <File Path="docker/docker-compose.yml" />
     <File Path="prometheus.yml" />
