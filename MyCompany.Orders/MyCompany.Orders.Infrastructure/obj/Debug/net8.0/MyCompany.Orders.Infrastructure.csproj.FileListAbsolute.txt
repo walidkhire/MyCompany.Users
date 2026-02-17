@@ -1,0 +1,15 @@
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\bin\Debug\net8.0\MyCompany.Orders.Infrastructure.deps.json
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\bin\Debug\net8.0\MyCompany.Orders.Infrastructure.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\bin\Debug\net8.0\MyCompany.Orders.Infrastructure.pdb
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\bin\Debug\net8.0\MyCompany.Orders.Domain.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\bin\Debug\net8.0\MyCompany.Orders.Domain.pdb
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\MyCompany.Orders.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\MyCompany.Orders.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\MyCompany.Orders.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\MyCompany.Orders.Infrastructure.AssemblyInfo.cs
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\MyCompany.Orders.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\MyCompan.90537157.Up2Date
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\MyCompany.Orders.Infrastructure.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\refint\MyCompany.Orders.Infrastructure.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\MyCompany.Orders.Infrastructure.pdb
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Infrastructure\obj\Debug\net8.0\ref\MyCompany.Orders.Infrastructure.dll

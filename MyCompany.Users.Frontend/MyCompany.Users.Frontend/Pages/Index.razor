@@ -1,0 +1,26 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Authorization
+@using MyCompany.Users.Frontend.Models
+@using MyCompany.Users.Frontend.Services
+@attribute [Authorize]
+<!-- ⚡ Protégé par JWT -->
+@inject IAuthService AuthService
+
+<h3>Welcome, @CurrentUser?.Email</h3>
+
+@code {
+    private User? CurrentUser;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            CurrentUser = await AuthService.GetCurrentUserAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading user: {ex.Message}");
+        }
+    }
+
+}

@@ -1,0 +1,17 @@
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\MyCompany.Orders.Application.csproj.AssemblyReference.cache
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\MyCompany.Orders.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\MyCompany.Orders.Application.AssemblyInfoInputs.cache
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\MyCompany.Orders.Application.AssemblyInfo.cs
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\MyCompany.Orders.Application.csproj.CoreCompileInputs.cache
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\bin\Debug\net8.0\MyCompany.Orders.Application.deps.json
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\bin\Debug\net8.0\MyCompany.Orders.Application.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\bin\Debug\net8.0\MyCompany.Orders.Application.pdb
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\bin\Debug\net8.0\MyCompany.Orders.Domain.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\bin\Debug\net8.0\MyCompany.Orders.Infrastructure.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\bin\Debug\net8.0\MyCompany.Orders.Domain.pdb
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\bin\Debug\net8.0\MyCompany.Orders.Infrastructure.pdb
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\MyCompan.FF7FF2F7.Up2Date
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\MyCompany.Orders.Application.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\refint\MyCompany.Orders.Application.dll
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\MyCompany.Orders.Application.pdb
+C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Orders\MyCompany.Orders.Application\obj\Debug\net8.0\ref\MyCompany.Orders.Application.dll

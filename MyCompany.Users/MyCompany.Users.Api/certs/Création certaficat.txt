@@ -1,0 +1,38 @@
+# Chemin complet de sortie pour le certificat
+$certPath = "C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Users\certs\mycert.pfx"
+
+# Mot de passe pour le .pfx
+$pwd = ConvertTo-SecureString -String "MyCertPassword123" -Force -AsPlainText
+
+# Générer le certificat auto-signé pour localhost
+New-SelfSignedCertificate `
+    -DnsName "localhost" `
+    -CertStoreLocation "cert:\LocalMachine\My" `
+    -NotAfter (Get-Date).AddYears(5) `
+    | Export-PfxCertificate -FilePath $certPath -Password $pwd
+
+
+
+    Powershell mode administrateur requis pour LocalMachine, sinon utilisez CurrentUser
+
+    # 1️⃣ Créer le dossier certs si il n'existe pas
+$certFolder = "C:\Users\walid\source\repos\MyCompany.Users\MyCompany.Users\certs"
+if (!(Test-Path -Path $certFolder)) {
+    New-Item -ItemType Directory -Path $certFolder
+}
+
+# 2️⃣ Chemin complet pour le fichier .pfx
+$certPath = Join-Path $certFolder "mycert.pfx"
+
+# 3️⃣ Mot de passe pour le certificat
+$pwd = ConvertTo-SecureString -String "MyCertPassword123" -Force -AsPlainText
+
+# 4️⃣ Générer le certificat auto-signé pour localhost dans CurrentUser (pas besoin d’admin)
+New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "cert:\CurrentUser\My" -NotAfter (Get-Date).AddYears(5) | Export-PfxCertificate -FilePath $certPath -Password $pwd
+
+# 5️⃣ Vérifier que le fichier .pfx est créé
+if (Test-Path $certPath) {
+    Write-Host "Certificat créé avec succès : $certPath"
+} else {
+    Write-Host "Erreur lors de la création du certificat"
+}

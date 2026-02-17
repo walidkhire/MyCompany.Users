@@ -1,0 +1,39 @@
+<Solution>
+  <Folder Name="/BackEnd/" />
+  <Folder Name="/BackEnd/docker/">
+    <File Path="docker/docker-compose.yml" />
+    <File Path="prometheus.yml" />
+  </Folder>
+  <Folder Name="/BackEnd/docker/k8s/">
+    <File Path="docker/k8s/gateway-deployment.yaml" />
+    <File Path="docker/k8s/gateway-service.yaml" />
+    <File Path="docker/k8s/prometheus-deployment.yaml" />
+    <File Path="docker/k8s/rabbitmq-deployment.yaml" />
+    <File Path="docker/k8s/rabbitmq-service.yaml" />
+    <File Path="gateway-hpa.yaml" />
+    <File Path="grafana-deployment.yaml" />
+    <File Path="ingress.yaml" />
+    <File Path="prometheus-config.yaml" />
+  </Folder>
+  <Folder Name="/BackEnd/MyCompany.Gateway.API/">
+    <Project Path="MyCompany.Gateway.API/MyCompany.Gateway.API/MyCompany.Gateway.API.csproj" Id="bb0b5534-2adb-42e5-87e6-1361f3c0d134" />
+  </Folder>
+  <Folder Name="/BackEnd/MyCompany.Orders/">
+    <Project Path="MyCompany.Orders/MyCompany.Orders.API/MyCompany.Orders.API.csproj" Id="960e0028-1f46-40b2-b167-07305933af80" />
+    <Project Path="MyCompany.Orders/MyCompany.Orders.Application/MyCompany.Orders.Application.csproj" Id="3a7fc65c-8a9d-492e-a54c-d887a7ae8653" />
+    <Project Path="MyCompany.Orders/MyCompany.Orders.Domain/MyCompany.Orders.Domain.csproj" Id="d1d9904e-bd1c-4999-863b-d083d4a3094f" />
+    <Project Path="MyCompany.Orders/MyCompany.Orders.Infrastructure/MyCompany.Orders.Infrastructure.csproj" Id="aaa977ce-da06-4515-bef3-5c878bfa56bc" />
+  </Folder>
+  <Folder Name="/BackEnd/MyCompany.Shared/">
+    <Project Path="MyCompany.Shared/MyCompany.Shared.csproj" Id="7460ff1f-d8e4-4794-81c0-2e2b17e7cb78" />
+  </Folder>
+  <Folder Name="/BackEnd/MyCompany.Users/">
+    <Project Path="MyCompany.Users/MyCompany.Users.Api/MyCompany.Users.API.csproj" />
+    <Project Path="MyCompany.Users/MyCompany.Users.Application/MyCompany.Users.Application.csproj" />
+    <Project Path="MyCompany.Users/MyCompany.Users.Domain/MyCompany.Users.Domain.csproj" />
+    <Project Path="MyCompany.Users/MyCompany.Users.Infrastructure/MyCompany.Users.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/FrontEnd/">
+    <Project Path="MyCompany.Users.Frontend/MyCompany.Users.Frontend/MyCompany.Users.Frontend.csproj" Id="bcb0ebe4-e04d-4201-a9c0-8937ec2d784e" />
+  </Folder>
+</Solution>

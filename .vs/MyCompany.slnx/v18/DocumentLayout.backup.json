@@ -1,0 +1,509 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{193184DD-457D-44C0-9CD4-A466DC695AF4}|NewFolder1{193184DD-457D-44C0-9CD4-A466DC695AF4}|C:\\Users\\walid\\source\\repos\\MyCompany.Users\\gateway-hpa.yaml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{193184DD-457D-44C0-9CD4-A466DC695AF4}|NewFolder1{193184DD-457D-44C0-9CD4-A466DC695AF4}|solutionrelative:gateway-hpa.yaml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{193184DD-457D-44C0-9CD4-A466DC695AF4}|NewFolder1{193184DD-457D-44C0-9CD4-A466DC695AF4}|C:\\Users\\walid\\source\\repos\\MyCompany.Users\\ingress.yaml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{193184DD-457D-44C0-9CD4-A466DC695AF4}|NewFolder1{193184DD-457D-44C0-9CD4-A466DC695AF4}|solutionrelative:ingress.yaml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{193184DD-457D-44C0-9CD4-A466DC695AF4}|NewFolder1{193184DD-457D-44C0-9CD4-A466DC695AF4}|C:\\Users\\walid\\source\\repos\\MyCompany.Users\\grafana-deployment.yaml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{193184DD-457D-44C0-9CD4-A466DC695AF4}|NewFolder1{193184DD-457D-44C0-9CD4-A466DC695AF4}|solutionrelative:grafana-deployment.yaml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{193184DD-457D-44C0-9CD4-A466DC695AF4}|NewFolder1{193184DD-457D-44C0-9CD4-A466DC695AF4}|C:\\Users\\walid\\source\\repos\\MyCompany.Users\\prometheus-config.yaml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{193184DD-457D-44C0-9CD4-A466DC695AF4}|NewFolder1{193184DD-457D-44C0-9CD4-A466DC695AF4}|solutionrelative:prometheus-config.yaml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.gateway.api\\mycompany.gateway.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|solutionrelative:mycompany.gateway.api\\mycompany.gateway.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE638E2A-148C-A533-D7B9-C8BC8DECB4A4}|docker{EE638E2A-148C-A533-D7B9-C8BC8DECB4A4}|C:\\Users\\walid\\source\\repos\\MyCompany.Users\\prometheus.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{EE638E2A-148C-A533-D7B9-C8BC8DECB4A4}|docker{EE638E2A-148C-A533-D7B9-C8BC8DECB4A4}|solutionrelative:prometheus.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE638E2A-148C-A533-D7B9-C8BC8DECB4A4}|docker{EE638E2A-148C-A533-D7B9-C8BC8DECB4A4}|C:\\Users\\walid\\source\\repos\\MyCompany.Users\\docker\\docker-compose.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
+      "RelativeMoniker": "D:0:0:{EE638E2A-148C-A533-D7B9-C8BC8DECB4A4}|docker{EE638E2A-148C-A533-D7B9-C8BC8DECB4A4}|solutionrelative:docker\\docker-compose.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.gateway.api\\mycompany.gateway.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|solutionrelative:mycompany.gateway.api\\mycompany.gateway.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.gateway.api\\mycompany.gateway.api\\controllers\\statuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|solutionrelative:mycompany.gateway.api\\mycompany.gateway.api\\controllers\\statuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.api\\services\\rabbitmqpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|solutionrelative:mycompany.users\\mycompany.users.api\\services\\rabbitmqpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|solutionrelative:mycompany.users\\mycompany.users.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6FCAB1D-D209-7CA6-B63A-A8FBAB1564D7}|MyCompany.Users\\MyCompany.Users.Application\\MyCompany.Users.Application.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6FCAB1D-D209-7CA6-B63A-A8FBAB1564D7}|MyCompany.Users\\MyCompany.Users.Application\\MyCompany.Users.Application.csproj|solutionrelative:mycompany.users\\mycompany.users.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7460FF1F-D8E4-4794-81C0-2E2B17E7CB78}|MyCompany.Shared\\MyCompany.Shared.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.shared\\middlewares\\globalexceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7460FF1F-D8E4-4794-81C0-2E2B17E7CB78}|MyCompany.Shared\\MyCompany.Shared.csproj|solutionrelative:mycompany.shared\\middlewares\\globalexceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|solutionrelative:mycompany.users\\mycompany.users.api\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|solutionrelative:mycompany.users\\mycompany.users.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.gateway.api\\mycompany.gateway.api\\mycompany.gateway.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|solutionrelative:mycompany.gateway.api\\mycompany.gateway.api\\mycompany.gateway.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{960E0028-1F46-40B2-B167-07305933AF80}|MyCompany.Orders\\MyCompany.Orders.API\\MyCompany.Orders.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.orders\\mycompany.orders.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{960E0028-1F46-40B2-B167-07305933AF80}|MyCompany.Orders\\MyCompany.Orders.API\\MyCompany.Orders.API.csproj|solutionrelative:mycompany.orders\\mycompany.orders.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAA977CE-DA06-4515-BEF3-5C878BFA56BC}|MyCompany.Orders\\MyCompany.Orders.Infrastructure\\MyCompany.Orders.Infrastructure.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.orders\\mycompany.orders.infrastructure\\data\\ordersdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAA977CE-DA06-4515-BEF3-5C878BFA56BC}|MyCompany.Orders\\MyCompany.Orders.Infrastructure\\MyCompany.Orders.Infrastructure.csproj|solutionrelative:mycompany.orders\\mycompany.orders.infrastructure\\data\\ordersdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{960E0028-1F46-40B2-B167-07305933AF80}|MyCompany.Orders\\MyCompany.Orders.API\\MyCompany.Orders.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.orders\\mycompany.orders.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{960E0028-1F46-40B2-B167-07305933AF80}|MyCompany.Orders\\MyCompany.Orders.API\\MyCompany.Orders.API.csproj|solutionrelative:mycompany.orders\\mycompany.orders.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{960E0028-1F46-40B2-B167-07305933AF80}|MyCompany.Orders\\MyCompany.Orders.API\\MyCompany.Orders.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.orders\\mycompany.orders.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{960E0028-1F46-40B2-B167-07305933AF80}|MyCompany.Orders\\MyCompany.Orders.API\\MyCompany.Orders.API.csproj|solutionrelative:mycompany.orders\\mycompany.orders.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.api\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|solutionrelative:mycompany.users\\mycompany.users.api\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1359C862-3E35-6314-F7C1-1286FEF8BFF1}|MyCompany.Users\\MyCompany.Users.Infrastructure\\MyCompany.Users.Infrastructure.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1359C862-3E35-6314-F7C1-1286FEF8BFF1}|MyCompany.Users\\MyCompany.Users.Infrastructure\\MyCompany.Users.Infrastructure.csproj|solutionrelative:mycompany.users\\mycompany.users.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|solutionrelative:mycompany.users\\mycompany.users.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAA977CE-DA06-4515-BEF3-5C878BFA56BC}|MyCompany.Orders\\MyCompany.Orders.Infrastructure\\MyCompany.Orders.Infrastructure.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.orders\\mycompany.orders.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAA977CE-DA06-4515-BEF3-5C878BFA56BC}|MyCompany.Orders\\MyCompany.Orders.Infrastructure\\MyCompany.Orders.Infrastructure.csproj|solutionrelative:mycompany.orders\\mycompany.orders.infrastructure\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAA977CE-DA06-4515-BEF3-5C878BFA56BC}|MyCompany.Orders\\MyCompany.Orders.Infrastructure\\MyCompany.Orders.Infrastructure.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.orders\\mycompany.orders.infrastructure\\httpclients\\usersclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAA977CE-DA06-4515-BEF3-5C878BFA56BC}|MyCompany.Orders\\MyCompany.Orders.Infrastructure\\MyCompany.Orders.Infrastructure.csproj|solutionrelative:mycompany.orders\\mycompany.orders.infrastructure\\httpclients\\usersclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AAA977CE-DA06-4515-BEF3-5C878BFA56BC}|MyCompany.Orders\\MyCompany.Orders.Infrastructure\\MyCompany.Orders.Infrastructure.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.orders\\mycompany.orders.infrastructure\\httpclients\\iusersclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AAA977CE-DA06-4515-BEF3-5C878BFA56BC}|MyCompany.Orders\\MyCompany.Orders.Infrastructure\\MyCompany.Orders.Infrastructure.csproj|solutionrelative:mycompany.orders\\mycompany.orders.infrastructure\\httpclients\\iusersclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.users\\mycompany.users.api\\controllers\\produitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AD46E41-74C0-FA37-510C-460B0341F2E3}|MyCompany.Users\\MyCompany.Users.Api\\MyCompany.Users.API.csproj|solutionrelative:mycompany.users\\mycompany.users.api\\controllers\\produitcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|c:\\users\\walid\\source\\repos\\mycompany.users\\mycompany.gateway.api\\mycompany.gateway.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BB0B5534-2ADB-42E5-87E6-1361F3C0D134}|MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.csproj|solutionrelative:mycompany.gateway.api\\mycompany.gateway.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Api\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Api\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwDcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T15:22:09.918Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "gateway-hpa.yaml",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\gateway-hpa.yaml",
+              "RelativeDocumentMoniker": "gateway-hpa.yaml",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\gateway-hpa.yaml",
+              "RelativeToolTip": "gateway-hpa.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-02-17T09:22:44.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ingress.yaml",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\ingress.yaml",
+              "RelativeDocumentMoniker": "ingress.yaml",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\ingress.yaml",
+              "RelativeToolTip": "ingress.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-02-17T09:22:06.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "grafana-deployment.yaml",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\grafana-deployment.yaml",
+              "RelativeDocumentMoniker": "grafana-deployment.yaml",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\grafana-deployment.yaml",
+              "RelativeToolTip": "grafana-deployment.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-02-17T09:21:08.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "prometheus-config.yaml",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\prometheus-config.yaml",
+              "RelativeDocumentMoniker": "prometheus-config.yaml",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\prometheus-config.yaml",
+              "RelativeToolTip": "prometheus-config.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-02-17T09:20:19.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\docker\\docker-compose.yml",
+              "RelativeDocumentMoniker": "docker\\docker-compose.yml",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\docker\\docker-compose.yml",
+              "RelativeToolTip": "docker\\docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-02-17T08:12:35.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RabbitMqPublisher.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Services\\RabbitMqPublisher.cs",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Api\\Services\\RabbitMqPublisher.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Services\\RabbitMqPublisher.cs",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Api\\Services\\RabbitMqPublisher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:25:22.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\appsettings.json",
+              "RelativeDocumentMoniker": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\appsettings.json",
+              "RelativeToolTip": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\appsettings.json",
+              "ViewState": "AgIAABMAAAAAAAAAAAAwwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-10T15:26:01.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\Program.cs",
+              "RelativeDocumentMoniker": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\Program.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\Program.cs",
+              "RelativeToolTip": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\Program.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAowHwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T15:15:56.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "prometheus.yml",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\prometheus.yml",
+              "RelativeDocumentMoniker": "prometheus.yml",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\prometheus.yml",
+              "RelativeToolTip": "prometheus.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2026-02-17T08:22:53.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Api\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Api\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAgwDIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:30:35.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Application\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Application\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Application\\Services\\UserService.cs",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Application\\Services\\UserService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAowCgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T15:22:09.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "StatusController.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\Controllers\\StatusController.cs",
+              "RelativeDocumentMoniker": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\Controllers\\StatusController.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\Controllers\\StatusController.cs",
+              "RelativeToolTip": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\Controllers\\StatusController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:04:20.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GlobalExceptionMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Shared\\Middlewares\\GlobalExceptionMiddleware.cs",
+              "RelativeDocumentMoniker": "MyCompany.Shared\\Middlewares\\GlobalExceptionMiddleware.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Shared\\Middlewares\\GlobalExceptionMiddleware.cs",
+              "RelativeToolTip": "MyCompany.Shared\\Middlewares\\GlobalExceptionMiddleware.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAowBsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:07:33.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Program.cs",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Program.cs",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Api\\Program.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAMwHMAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:55:02.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MyCompany.Gateway.API.http",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.http",
+              "RelativeDocumentMoniker": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.http",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.http",
+              "RelativeToolTip": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\MyCompany.Gateway.API.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-02-10T16:56:09.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.API\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "MyCompany.Orders\\MyCompany.Orders.API\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.API\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "MyCompany.Orders\\MyCompany.Orders.API\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAowCEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T15:22:09.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "OrdersDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.Infrastructure\\Data\\OrdersDbContext.cs",
+              "RelativeDocumentMoniker": "MyCompany.Orders\\MyCompany.Orders.Infrastructure\\Data\\OrdersDbContext.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.Infrastructure\\Data\\OrdersDbContext.cs",
+              "RelativeToolTip": "MyCompany.Orders\\MyCompany.Orders.Infrastructure\\Data\\OrdersDbContext.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBQwA4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:39:16.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.API\\appsettings.json",
+              "RelativeDocumentMoniker": "MyCompany.Orders\\MyCompany.Orders.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.API\\appsettings.json",
+              "RelativeToolTip": "MyCompany.Orders\\MyCompany.Orders.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-10T18:01:34.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.API\\Program.cs",
+              "RelativeDocumentMoniker": "MyCompany.Orders\\MyCompany.Orders.API\\Program.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.API\\Program.cs",
+              "RelativeToolTip": "MyCompany.Orders\\MyCompany.Orders.API\\Program.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAIBJwDgAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:09:37.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Api\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Api\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:58:43.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Infrastructure\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Infrastructure\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Infrastructure\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Infrastructure\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:58:58.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\appsettings.json",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-10T17:59:46.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "MyCompany.Orders\\MyCompany.Orders.Infrastructure\\Repositories\\OrderRepository.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.Infrastructure\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "MyCompany.Orders\\MyCompany.Orders.Infrastructure\\Repositories\\OrderRepository.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAQwAsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:37:04.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IUsersClient.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.Infrastructure\\HttpClients\\IUsersClient.cs",
+              "RelativeDocumentMoniker": "MyCompany.Orders\\MyCompany.Orders.Infrastructure\\HttpClients\\IUsersClient.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.Infrastructure\\HttpClients\\IUsersClient.cs",
+              "RelativeToolTip": "MyCompany.Orders\\MyCompany.Orders.Infrastructure\\HttpClients\\IUsersClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:21:04.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UsersClient.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.Infrastructure\\HttpClients\\UsersClient.cs",
+              "RelativeDocumentMoniker": "MyCompany.Orders\\MyCompany.Orders.Infrastructure\\HttpClients\\UsersClient.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Orders\\MyCompany.Orders.Infrastructure\\HttpClients\\UsersClient.cs",
+              "RelativeToolTip": "MyCompany.Orders\\MyCompany.Orders.Infrastructure\\HttpClients\\UsersClient.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:21:06.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ProduitController.cs",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Controllers\\ProduitController.cs",
+              "RelativeDocumentMoniker": "MyCompany.Users\\MyCompany.Users.Api\\Controllers\\ProduitController.cs",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Users\\MyCompany.Users.Api\\Controllers\\ProduitController.cs",
+              "RelativeToolTip": "MyCompany.Users\\MyCompany.Users.Api\\Controllers\\ProduitController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T17:02:34.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\walid\\source\\repos\\MyCompany.Users\\MyCompany.Gateway.API\\MyCompany.Gateway.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "MyCompany.Gateway.API\\MyCompany.Gateway.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-10T15:25:52.93Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

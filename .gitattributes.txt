@@ -1,0 +1,67 @@
+############################
+# C# / .NET
+############################
+*.cs text eol=lf
+*.csproj text eol=lf
+*.sln text eol=lf
+*.props text eol=lf
+*.targets text eol=lf
+*.config text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.xaml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+############################
+# Frontend (Blazor / JS / CSS)
+############################
+*.js text eol=lf
+*.ts text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+*.razor text eol=lf
+
+############################
+# Docker / Kubernetes
+############################
+Dockerfile text eol=lf
+*.dockerfile text eol=lf
+*.k8s text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+############################
+# Ignore binaries
+############################
+*.dll binary
+*.exe binary
+*.pdb binary
+*.wasm binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.ico binary
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+############################
+# Logs / Temp
+############################
+*.log text eol=lf
+logs/* text eol=lf
+
+############################
+# Generated / obj / bin
+############################
+bin/ binary
+obj/ binary
+wwwroot/_framework/* binary

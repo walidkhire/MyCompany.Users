@@ -1,0 +1,6 @@
+@MyCompany.Gateway.API_HostAddress = http://localhost:5280
+
+GET {{MyCompany.Gateway.API_HostAddress}}//Status
+Accept: application/json
+
+###
