@@ -4,14 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyCompany.Users.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/produits")]
     [ApiController]
     [Authorize]
     public class ProduitController : ControllerBase
     {
 
-        [HttpGet]
-        [AllowAnonymous]
+        [HttpGet("Produit")]
         public IActionResult Get()
         {
             return Ok(new { Message = "Hello from ProduitController!" });

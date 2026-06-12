@@ -93,7 +93,7 @@ namespace MyCompany.Users.API.Controllers
         // ======================
         // Endpoint protégé
         // ======================
-        [AllowAnonymous]
+    
         [HttpGet("profile")]
         public IActionResult Profile()
         {

@@ -1,8 +1,6 @@
 ﻿using MyCompany.Users.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyCompany.Users.Application.Interfaces
@@ -12,7 +10,11 @@ namespace MyCompany.Users.Application.Interfaces
         Task<User?> GetUserByEmailAsync(string email);
         Task<IEnumerable<User>> GetAllAsync();
         Task CreateAsync(string name, string email, string password);
-        Task UpdateAsync(Guid id, string name, string email, string? password = null);
+        // Aligné pour accepter le password optionnel ou obligatoire selon vos besoins
+        Task UpdateAsync(Guid id, string name, string email, string password);
         Task DeleteAsync(Guid id);
+        Task<User> GetById(Guid id);
+        // Ajout de la méthode de validation pour qu'elle soit accessible depuis le AuthController
+        Task<User?> ValidateUserAsync(string email, string password);
     }
 }

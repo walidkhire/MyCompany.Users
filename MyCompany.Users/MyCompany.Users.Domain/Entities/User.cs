@@ -17,10 +17,7 @@ namespace MyCompany.Users.Domain.Entities
         // 🔑 Propriété mot de passe (hashé en production)
         public string Password { get; set; } = null!;
 
-        private User() { }
-
-
-        public User(string name, string email,string password)
+        public User(string name, string email, string password)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -28,7 +25,7 @@ namespace MyCompany.Users.Domain.Entities
             Password = BCrypt.Net.BCrypt.HashPassword(password); // hash du mot de passe
         }
 
-        public void Update(string name, string email,string password)
+        public void Update(string name, string email, string password)
         {
             Name = name;
             Email = email;

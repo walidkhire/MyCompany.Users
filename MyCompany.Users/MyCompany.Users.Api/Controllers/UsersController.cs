@@ -2,25 +2,28 @@
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Users.Application.DTOs;
 using MyCompany.Users.Application.Interfaces;
-using MyCompany.Users.Application.Services;
 using MyCompany.Users.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Users.API.Services;
 
 namespace MyCompany.Users.API.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    [Authorize] // Tous les endpoints nécessitent JWT sauf si on met [AllowAnonymous]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _service;
+        private readonly RabbitMqPublisher _publisher; // ✅ Déclaré proprement en haut
 
-        // ✅ On injecte l'interface IUserService, pas la classe concrète
-        public UsersController(IUserService userService)
+        // ✅ Injectez TOUS vos services requis dans le constructeur unique
+        public UsersController(IUserService userService, RabbitMqPublisher publisher)
         {
             _service = userService;
+            _publisher = publisher;
         }
-
 
         // ----------------------
         // 1️⃣ GET : Récupérer tous les utilisateurs
@@ -30,39 +33,48 @@ namespace MyCompany.Users.API.Controllers
         public async Task<IEnumerable<User>> Get()
         {
             var users = await _service.GetAllAsync();
-            return (users);
+            return users;
+        }
+
+
+        // ----------------------
+        // 1️⃣ GET : Récupérer tous les utilisateurs
+        // ----------------------
+        [HttpGet("{id}")]
+        public async Task<User> GetById(Guid Id)
+        {
+            var users = await _service.GetById(Id);
+            return users;
         }
 
         // ----------------------
-        // 3️⃣ POST : Créer un nouvel utilisateur
+        // 2️⃣ POST : Créer un nouvel utilisateur (Standard)
         // ----------------------
         [HttpPost]
-
+        [AllowAnonymous] // 👈 AJOUTEZ CETTE LIGNE ICI temporairement pour créer vos tests
         public async Task<IActionResult> Post([FromBody] CreateUserDto dto)
         {
             await _service.CreateAsync(dto.Name, dto.Email, dto.Password);
             return StatusCode(201);
         }
 
-
-
-        private readonly RabbitMqPublisher _publisher = new RabbitMqPublisher();
-
+        // ----------------------
+        // 3️⃣ POST : Créer avec notification RabbitMQ
+        // ----------------------
         [HttpPost("create")]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto)
         {
-            // Ici on simule la création utilisateur
             await _service.CreateAsync(dto.Name, dto.Email, dto.Password);
-            _publisher.PublishUserCreated(dto.Email);
+
+            // ✅ Ajout du 'await' pour corriger le warning CS4014
+            await _publisher.PublishUserCreated(dto.Email);
 
             return Ok(new { message = $"Utilisateur créé : {dto.Email}" });
         }
 
-
-
-        //🧩 9️⃣ CRUD COMPLET (Create / Read / Update / Delete)
         // ----------------------
-        // 2️⃣ GET /{id} : Récupérer un utilisateur par Id
+        // 4️⃣ PUT : Mettre à jour un utilisateur
         // ----------------------
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateUserDto dto)

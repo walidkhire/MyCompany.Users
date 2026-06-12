@@ -17,15 +17,14 @@ namespace MyCompany.Orders.API.Controllers
         }
 
 
-        [AllowAnonymous] 
+      
 
-        [HttpGet]
+        [HttpGet("GetOrder")]
         public IActionResult GetOrders()
         {
             return Ok(new[] { "Order1", "Order2" });
         }
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost("AddOrder")] 
         public async Task<IActionResult> Create(Guid userId, decimal total)
         {
             // Récupérer le token JWT depuis l'Authorization header

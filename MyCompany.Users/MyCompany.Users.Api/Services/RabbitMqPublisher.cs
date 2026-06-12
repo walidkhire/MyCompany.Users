@@ -1,4 +1,5 @@
 ﻿using RabbitMQ.Client;
+using System;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,6 @@ namespace Users.API.Services
             _factory = new ConnectionFactory() { HostName = "localhost" };
         }
 
-        // Note : En .NET moderne, on préfère initialiser la connexion de manière asynchrone
         public async Task InitializeAsync()
         {
             _connection = await _factory.CreateConnectionAsync();
@@ -30,13 +30,18 @@ namespace Users.API.Services
 
         public async Task PublishUserCreated(string email)
         {
-            if (_channel == null) await InitializeAsync();
+            if (_channel == null)
+            {
+                await InitializeAsync();
+            }
+
+            // Extraction dans une variable locale pour prouver au compilateur 
+            // que la référence ne redeviendra pas nulle entre-temps
+            var channel = _channel ?? throw new InvalidOperationException("Impossible d'initialiser le canal RabbitMQ.");
 
             var body = Encoding.UTF8.GetBytes(email);
 
-            // BasicPublish est devenu BasicPublishAsync
-            // L'échange vide "" est l'échange par défaut
-            await _channel.BasicPublishAsync(exchange: "",
+            await channel.BasicPublishAsync(exchange: "",
                                             routingKey: "users-created",
                                             body: body);
         }

@@ -6,13 +6,12 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔹 Controllers (pour endpoints debug / health)
+// 🔹 Services de base
 builder.Services.AddControllers();
-//
 builder.Services.AddHealthChecks();
-
-// 🔹 Swagger
 builder.Services.AddEndpointsApiExplorer();
+
+// 🔹 Configuration Swagger avec Support JWT
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -22,7 +21,6 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Gateway YARP pour Users & Orders"
     });
 
-    // 🔐 Support JWT dans Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Authorization: Bearer {token}",
@@ -52,7 +50,7 @@ builder.Services
     .AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
-// 🔹 JWT Authentication (centralisé au Gateway)
+// 🔹 Authentification JWT (Centralisée sur la Gateway)
 var jwtKey = builder.Configuration["Jwt:Key"]!;
 var jwtIssuer = builder.Configuration["Jwt:Issuer"]!;
 var jwtAudience = builder.Configuration["Jwt:Audience"]!;
@@ -69,14 +67,13 @@ builder.Services
             ValidateLifetime = true,
             ValidIssuer = jwtIssuer,
             ValidAudience = jwtAudience,
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(jwtKey))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
     });
 
 builder.Services.AddAuthorization();
 
-// 🔹 CORS
+// 🔹 Configuration des CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>
@@ -89,37 +86,31 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// 🔹 Swagger middleware
+// 🔹 Pipeline de Middlewares
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gateway v1");
-        c.RoutePrefix = "swagger"; // /swagger
+        c.RoutePrefix = "swagger";
     });
 }
 
-// 🔹 Middleware pipeline
 app.UseHttpsRedirection();
 app.UseCors("Frontend");
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-
-// 🔹 Prometheus metrics
-app.UseHttpMetrics();      // 👈 monitoring
-app.MapMetrics();          // 👈 endpoint /metrics
-
-// 🔹 Health check endpoint
+// 🔹 Observabilité et Métriques (Prometheus & HealthChecks)
+app.UseHttpMetrics();
+app.MapMetrics();
 app.MapHealthChecks("/health");
 
-
-// 🔹 Controllers (debug, health, etc.)
 app.MapControllers();
-// 🔹 Reverse Proxy (DOIT être à la fin)
-app.MapReverseProxy();
 
+// 🔹 Activation du Reverse Proxy (Doit rester à la fin)
+app.MapReverseProxy();
 
 app.Run();

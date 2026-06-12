@@ -14,10 +14,11 @@ using MyCompany.Users.Domain.Interfaces;
 using MyCompany.Users.Infrastructure.Data;
 using MyCompany.Users.Infrastructure.Repositories;
 using System.Text;
+using Users.API.Services; // 👈 AJOUTÉ : Pour que le type RabbitMqPublisher soit reconnu
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔹 HTTPS (dotnet dev-certs)
+// Configuration HTTPS Kestrel
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ConfigureHttpsDefaults(httpsOptions =>
@@ -26,17 +27,14 @@ builder.WebHost.ConfigureKestrel(options =>
     });
 });
 
-// ======================
-// 1️⃣ Controllers
-// ======================
+// 1️⃣ Services de base
 builder.Services.AddControllers();
-
-// ======================
-// 2️⃣ Swagger + JWT
-// ======================
 builder.Services.AddEndpointsApiExplorer();
+
+// 2️⃣ Configuration Swagger avec Support JWT
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyCompany Users API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Entrez : Bearer {votre_token}",
@@ -61,9 +59,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// ======================
-// 3️⃣ JWT Authentication
-// ======================
+// 3️⃣ Authentification JWT Locale
 var jwtKey = builder.Configuration["Jwt:Key"]!;
 var jwtIssuer = builder.Configuration["Jwt:Issuer"]!;
 var jwtAudience = builder.Configuration["Jwt:Audience"]!;
@@ -85,18 +81,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// ======================
-// 4️⃣ Database
-// ======================
+// 4️⃣ Base de données SQL Server (Ciblée sur le projet Infrastructure)
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        sql => sql.MigrationsAssembly("MyCompany.Users.API")
-    ));
+        sql => sql.MigrationsAssembly("MyCompany.Users.Infrastructure")));
 
-// ======================
-// 5️⃣ MassTransit (RabbitMQ)
-// ======================
+// 5️⃣ Communication Événementielle (MassTransit / Producteur RabbitMQ)
 builder.Services.AddMassTransit(x =>
 {
     x.UsingRabbitMq((context, cfg) =>
@@ -109,17 +100,16 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
-// ======================
-// 6️⃣ Dependency Injection
-// ======================
+// 6️⃣ Injection de Dépendances & Cache
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddMemoryCache();
-builder.Services.AddHttpClient(); // pour API clients si besoin
+builder.Services.AddHttpClient();
 
-// ======================
-// 7️⃣ CORS
-// ======================
+// 🔹 CORRIGÉ : Enregistrement du Publisher en Singleton pour le controlleur
+builder.Services.AddSingleton<RabbitMqPublisher>();
+
+// 7️⃣ Configuration des CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -130,24 +120,15 @@ builder.Services.AddCors(options =>
     });
 });
 
-// ======================
-// 8️⃣ HealthChecks
-// ======================
+// 8️⃣ Diagnostics & HealthChecks
 builder.Services.AddHealthChecks()
     .AddCheck<CacheHealthCheck>("Cache", tags: new[] { "cache" })
-    .AddCheck<DatabaseHealthCheck>("Database", tags: new[] { "database" })
-    .AddCheck<GaiaVeApiHealthCheck>("Api", tags: new[] { "api" });
+    .AddCheck<DatabaseHealthCheck>("Database", tags: new[] { "database" });
+   // .AddCheck<GaiaVeApiHealthCheck>("Api", tags: new[] { "api" });
 
-// ======================
-// 9️⃣ Build
-// ======================
 var app = builder.Build();
 
-// ======================
-// 10️⃣ Middleware global
-// ======================
-
-// Exception handling pour prod
+// 1️⃣0️⃣ Pipeline de Middlewares ordonné stratégiquement
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler(a => a.Run(async context =>
@@ -157,74 +138,39 @@ if (!app.Environment.IsDevelopment())
         if (feature != null)
         {
             var ex = feature.Error;
-            var problem = new
-            {
-                error = ex.Message,
-                stackTrace = app.Environment.IsDevelopment() ? ex.StackTrace : null
-            };
-            await context.Response.WriteAsJsonAsync(problem);
+            await context.Response.WriteAsJsonAsync(new { error = ex.Message });
         }
     }));
 }
 
-// Redirection HTTPS
 app.UseHttpsRedirection();
-
-// CORS
 app.UseCors("AllowFrontend");
 
-// Middlewares personnalisés
+// Middlewares d'infrastructure techniques (Log & Exception)
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseMiddleware<SecurityHeadersMiddleware>();
-app.UseMiddleware<RequestResponseLoggingMiddleware>();
 app.UseMiddleware<RequestTimingMiddleware>();
-app.UseMiddleware<ValidationMiddleware>();
+app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
-// Authentication & Authorization
+// Authentification & Autorisation d'abord
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ======================
-// 11️⃣ Swagger
-// ======================
+// Validation métier : S'exécute uniquement si la requête est authentifiée
+app.UseMiddleware<ValidationMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// ======================
-// 12️⃣ HealthCheck endpoints
-// ======================
-app.MapHealthChecks("/health/cache", new HealthCheckOptions
-{
-    Predicate = check => check.Tags.Contains("cache"),
-    ResponseWriter = HealthChecks.UI.Client.UIResponseWriter.WriteHealthCheckUIResponse
-});
+// 1️⃣2️⃣ Endpoints de monitoring et HealthChecks
+app.MapHealthChecks("/health/cache", new HealthCheckOptions { Predicate = c => c.Tags.Contains("cache"), ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
+app.MapHealthChecks("/health/database", new HealthCheckOptions { Predicate = c => c.Tags.Contains("database"), ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
+app.MapHealthChecks("/health/api", new HealthCheckOptions { Predicate = c => c.Tags.Contains("api"), ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
+app.MapHealthChecks("/health", new HealthCheckOptions { ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
 
-app.MapHealthChecks("/health/database", new HealthCheckOptions
-{
-    Predicate = check => check.Tags.Contains("database"),
-    ResponseWriter = HealthChecks.UI.Client.UIResponseWriter.WriteHealthCheckUIResponse
-});
-
-app.MapHealthChecks("/health/api", new HealthCheckOptions
-{
-    Predicate = check => check.Tags.Contains("api"),
-    ResponseWriter = HealthChecks.UI.Client.UIResponseWriter.WriteHealthCheckUIResponse
-});
-
-app.MapHealthChecks("/health", new HealthCheckOptions
-{
-    ResponseWriter = HealthChecks.UI.Client.UIResponseWriter.WriteHealthCheckUIResponse
-});
-
-// ======================
-// 13️⃣ Controllers
-// ======================
 app.MapControllers();
 
-// ======================
-// 14️⃣ Run
-// ======================
 app.Run();
