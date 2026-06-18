@@ -4,5 +4,7 @@
     {
         public Guid UserId { get; init; }
         public string Email { get; init; } = default!;
+        public string Name { get; init; } = default!;
+        
     }
 }

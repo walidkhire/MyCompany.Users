@@ -1,4 +1,6 @@
-﻿namespace MyCompany.Users.API.Middlewares
+﻿using Microsoft.AspNetCore.Http;
+
+namespace MyCompany.Gateway.API.Middlewares
 {
     public class SecurityHeadersMiddleware
     {

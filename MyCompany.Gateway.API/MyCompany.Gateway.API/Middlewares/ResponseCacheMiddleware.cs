@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace MyCompany.Shared.Middlewares
+namespace MyCompany.Gateway.API.Middlewares
 {
     public class ResponseCacheMiddleware
     {

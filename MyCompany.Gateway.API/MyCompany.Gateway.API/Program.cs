@@ -1,10 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MyCompany.Gateway.API.Middlewares;
 using Prometheus;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// 1. On enregistre le handler standard
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 
 // 🔹 Services de base
 builder.Services.AddControllers();
@@ -73,18 +79,26 @@ builder.Services
 
 builder.Services.AddAuthorization();
 
-// 🔹 Configuration des CORS
+
+
+// Etape 1 🔹 Configuration des CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("Frontend", policy =>
+    options.AddPolicy("MonFrontendPolicy", policy =>
     {
-        policy.WithOrigins("https://localhost:7282")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.WithOrigins("http://localhost:7282", "http://localhost:3000") // 🔹 Remplacez par les URLs exactes de vos Frontends (Angular, React...)
+              .AllowAnyMethod()  // Autorise GET, POST, PUT, DELETE
+              .AllowAnyHeader()  // Autorise les en-têtes personnalisés (dont l'en-tête Authorization pour votre JWT !)
+              .AllowCredentials(); // Autorise les cookies de session si nécessaire
     });
 });
 
+
 var app = builder.Build();
+
+// 2. On utilise l'extension native de .NET 8 (qui remplace votre UseGlobalExceptionHandling)
+app.UseExceptionHandler();
+
 
 // 🔹 Pipeline de Middlewares
 if (app.Environment.IsDevelopment())
@@ -98,7 +112,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("Frontend");
+
+// 🔹 ÉTAPE 2 : Activer le middleware CORS (Obligatoirement AVANT MapReverseProxy)
+app.UseCors("MonFrontendPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();

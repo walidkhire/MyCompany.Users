@@ -1,36 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyCompany.Users.Domain.Entities
 {
-
-    //🧠 2. Couche DOMAIN (cœur métier)
+    // 🧠 Couche DOMAIN (cœur métier - Pure et sans dépendance externe BCrypt)
     public class User
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
+        public string Password { get; private set; } // 🔹 Repassé en private set pour encapsulation
 
-        // 🔑 Propriété mot de passe (hashé en production)
-        public string Password { get; set; } = null!;
+        // Constructeur pour Entity Framework / Dapper
+        private User() { }
 
-        public User(string name, string email, string password)
+        // Constructeur Métier
+        public User(string name, string email, string hashedPassword)
         {
             Id = Guid.NewGuid();
             Name = name;
             Email = email;
-            Password = BCrypt.Net.BCrypt.HashPassword(password); // hash du mot de passe
+            Password = hashedPassword; // 🔹 Simple affectation ! On ne re-hache pas ici.
         }
 
-        public void Update(string name, string email, string password)
+        public void Update(string name, string email, string hashedPassword)
         {
             Name = name;
             Email = email;
-            if (!string.IsNullOrEmpty(password))
-                Password = BCrypt.Net.BCrypt.HashPassword(password);
+            if (!string.IsNullOrEmpty(hashedPassword))
+                Password = hashedPassword; // 🔹 Simple affectation !
         }
     }
 }

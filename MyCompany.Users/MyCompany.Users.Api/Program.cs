@@ -1,24 +1,24 @@
 ﻿using HealthChecks.UI.Client;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using MyCompany.Shared.Middlewares;
 using MyCompany.Users.API.HealthChecks;
 using MyCompany.Users.Application.Interfaces;
 using MyCompany.Users.Application.Services;
 using MyCompany.Users.Domain.Interfaces;
 using MyCompany.Users.Infrastructure.Data;
 using MyCompany.Users.Infrastructure.Repositories;
+using MyCompany.Users.API.Infrastructure; // 🔹 Dossier local où vous placerez votre nouveau GlobalExceptionHandler
 using System.Text;
-using Users.API.Services; // 👈 AJOUTÉ : Pour que le type RabbitMqPublisher soit reconnu
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuration HTTPS Kestrel
+// ==========================================
+// 💻 CONFIGURATION DE L'HÔTE & KESTREL
+// ==========================================
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ConfigureHttpsDefaults(httpsOptions =>
@@ -27,11 +27,21 @@ builder.WebHost.ConfigureKestrel(options =>
     });
 });
 
-// 1️⃣ Services de base
+// ==========================================
+// 1️⃣ SERVICES DE BASE & INFRASTRUCTURE
+// ==========================================
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient();
 
-// 2️⃣ Configuration Swagger avec Support JWT
+// 🔹 GESTION DES EXCEPTIONS MODERNE (.NET 8)
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
+// ==========================================
+// 2️⃣ DOCUMENTATION SWAGGER (JWT SUPPORT)
+// ==========================================
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyCompany Users API", Version = "v1" });
@@ -42,24 +52,21 @@ builder.Services.AddSwaggerGen(c =>
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey
     });
-
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
             new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
             },
             Array.Empty<string>()
         }
     });
 });
 
-// 3️⃣ Authentification JWT Locale
+// ==========================================
+// 3️⃣ SÉCURITÉ : AUTHENTIFICATION & CORS
+// ==========================================
 var jwtKey = builder.Configuration["Jwt:Key"]!;
 var jwtIssuer = builder.Configuration["Jwt:Issuer"]!;
 var jwtAudience = builder.Configuration["Jwt:Audience"]!;
@@ -81,15 +88,37 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// 4️⃣ Base de données SQL Server (Ciblée sur le projet Infrastructure)
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("https://localhost:7282") // Port de votre passerelle/front
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// ==========================================
+// 4️⃣ DONNÉES & PERSISTANCE (EF CORE)
+// ==========================================
+builder.Services.AddDbContext<AppDbContext>(options => // 🔹 REMPLACÉ PAR AppDbContext
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         sql => sql.MigrationsAssembly("MyCompany.Users.Infrastructure")));
 
-// 5️⃣ Communication Événementielle (MassTransit / Producteur RabbitMQ)
+// ==========================================
+// 5️⃣ MESSAGING (MASSTRANSIT + OUTBOX PATTERN)
+// ==========================================
+// 🔹 REMPLACÉ PAR AppDbContext ICI AUSSI
 builder.Services.AddMassTransit(x =>
 {
+    // 🔹 L'erreur peut venir d'ici si UseSqlServer() ou UseBusOutbox() est manquant !
+    x.AddEntityFrameworkOutbox<AppDbContext>(o =>
+    {
+        o.UseSqlServer(); // Dit à l'outbox d'utiliser SQL Server
+        o.UseBusOutbox(); // Active la publication des messages via l'outbox
+    });
+
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("localhost", "/", h =>
@@ -97,80 +126,55 @@ builder.Services.AddMassTransit(x =>
             h.Username("guest");
             h.Password("guest");
         });
+
+        // 🔹 TRÈS IMPORTANT : Configure l'Outbox sur le bus global
+        cfg.ConfigureEndpoints(context);
     });
 });
 
-// 6️⃣ Injection de Dépendances & Cache
+// ==========================================
+// 6️⃣ INJECTION DE DÉPENDANCES LOGIQUES
+// ==========================================
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddMemoryCache();
-builder.Services.AddHttpClient();
+// 💡 Note : RabbitMqPublisher a été supprimé car MassTransit (IPublishEndpoint) le remplace avantageusement.
 
-// 🔹 CORRIGÉ : Enregistrement du Publisher en Singleton pour le controlleur
-builder.Services.AddSingleton<RabbitMqPublisher>();
-
-// 7️⃣ Configuration des CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowFrontend", policy =>
-    {
-        policy.WithOrigins("https://localhost:7282")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
-
-// 8️⃣ Diagnostics & HealthChecks
+// ==========================================
+// 7️⃣ DIAGNOSTICS & HEALTHCHECKS
+// ==========================================
 builder.Services.AddHealthChecks()
     .AddCheck<CacheHealthCheck>("Cache", tags: new[] { "cache" })
     .AddCheck<DatabaseHealthCheck>("Database", tags: new[] { "database" });
-   // .AddCheck<GaiaVeApiHealthCheck>("Api", tags: new[] { "api" });
 
 var app = builder.Build();
 
-// 1️⃣0️⃣ Pipeline de Middlewares ordonné stratégiquement
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler(a => a.Run(async context =>
-    {
-        context.Response.ContentType = "application/json";
-        var feature = context.Features.Get<IExceptionHandlerFeature>();
-        if (feature != null)
-        {
-            var ex = feature.Error;
-            await context.Response.WriteAsJsonAsync(new { error = ex.Message });
-        }
-    }));
-}
+// ==========================================
+// 🧅 PIPELINE DE MIDDLEWARES (L'ORDRE EST CRUCIAL)
+// ==========================================
+
+// 🔹 1. Gestion globale des erreurs au tout début du cycle
+app.UseExceptionHandler();
 
 app.UseHttpsRedirection();
 app.UseCors("AllowFrontend");
 
-// Middlewares d'infrastructure techniques (Log & Exception)
-app.UseMiddleware<GlobalExceptionMiddleware>();
-app.UseMiddleware<SecurityHeadersMiddleware>();
-app.UseMiddleware<RequestTimingMiddleware>();
-app.UseMiddleware<RequestResponseLoggingMiddleware>();
-
-// Authentification & Autorisation d'abord
-app.UseAuthentication();
-app.UseAuthorization();
-
-// Validation métier : S'exécute uniquement si la requête est authentifiée
-app.UseMiddleware<ValidationMiddleware>();
-
+// 2. Sécurité et Routage de base
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// 1️⃣2️⃣ Endpoints de monitoring et HealthChecks
+// 3. Authentification & Autorisation (Obligatoirement AVANT les contrôleurs)
+app.UseAuthentication();
+app.UseAuthorization();
+
+// 4. Contrôleurs de l'API
+app.MapControllers();
+
+// 5. Endpoints de Monitoring (HealthChecks)
 app.MapHealthChecks("/health/cache", new HealthCheckOptions { Predicate = c => c.Tags.Contains("cache"), ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
 app.MapHealthChecks("/health/database", new HealthCheckOptions { Predicate = c => c.Tags.Contains("database"), ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
-app.MapHealthChecks("/health/api", new HealthCheckOptions { Predicate = c => c.Tags.Contains("api"), ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
 app.MapHealthChecks("/health", new HealthCheckOptions { ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
-
-app.MapControllers();
 
 app.Run();

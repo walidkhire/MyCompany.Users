@@ -30,19 +30,26 @@ namespace MyCompany.Users.Application.Services
         // ---------------------------------------------------------------------
         // 1️⃣ Enregistrement et Notification de création
         // ---------------------------------------------------------------------
-        public async Task CreateAsync(string name, string email, string password)
+        // Dans MyCompany.Users.Application.Services.UserService
+        public async Task CreateAsync(string name, string email, string rawPassword)
         {
-            var user = new User(name, email, password);
+            // 1. Hachage du mot de passe (Garantit qu'il arrive haché en BDD)
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(rawPassword);
+
+            // 2. Création de l'entité avec le mot de passe HACHÉ
+            var user = new User(name, email, hashedPassword);
             await _repository.AddAsync(user);
 
-            // 🔥 Publication MassTransit (Plus de blocage !)
-            await _publish.Publish(new UserCreatedEvent
+            // 3. Publication via l'IPublishEndpoint de MassTransit (Intégré à l'Outbox DbContext)
+            // Ce message sera stocké dans la table [DbOutbox] dans la MÊME transaction SQL
+            await _publish.Publish(new MyCompany.Shared.Events.UserCreatedEvent
             {
                 UserId = user.Id,
-                Email = user.Email
+                Email = user.Email,
+                Name = user.Name
             });
 
-            _logger.LogInformation("Utilisateur {Email} créé et notifié via MassTransit.", email);
+            _logger.LogInformation("Utilisateur {Email} créé et enregistré dans l'Outbox.", email);
         }
 
         // ---------------------------------------------------------------------

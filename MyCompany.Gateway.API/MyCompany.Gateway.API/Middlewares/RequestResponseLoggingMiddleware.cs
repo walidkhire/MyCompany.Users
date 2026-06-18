@@ -1,4 +1,7 @@
-﻿namespace MyCompany.Users.API.Middlewares
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+namespace MyCompany.Gateway.API.Middlewares
 {
     public class RequestResponseLoggingMiddleware
     {

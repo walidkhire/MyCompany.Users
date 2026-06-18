@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MassTransit; // 🔹 AJOUTÉ : Pour utiliser l'Outbox native de MassTransit
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyCompany.Users.Application.DTOs;
 using MyCompany.Users.Application.Interfaces;
@@ -6,7 +7,6 @@ using MyCompany.Users.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Users.API.Services;
 
 namespace MyCompany.Users.API.Controllers
 {
@@ -16,66 +16,64 @@ namespace MyCompany.Users.API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _service;
-        private readonly RabbitMqPublisher _publisher; // ✅ Déclaré proprement en haut
+        private readonly IPublishEndpoint _publishEndpoint; // 🔹 VERSION SENIOR : Remplacera à terme votre publisher maison pour l'Outbox
 
-        // ✅ Injectez TOUS vos services requis dans le constructeur unique
-        public UsersController(IUserService userService, RabbitMqPublisher publisher)
+        // ✅ Constructeur unique et propre
+        public UsersController(IUserService userService, IPublishEndpoint publishEndpoint)
         {
             _service = userService;
-            _publisher = publisher;
+            _publishEndpoint = publishEndpoint;
         }
 
-        // ----------------------
-        // 1️⃣ GET : Récupérer tous les utilisateurs
-        // ----------------------
+        // ---------------------------------------------------------------------
+        // 1️⃣ GET : Récupérer tous les utilisateurs (Anonyme pour la Gateway / Frontend)
+        // ---------------------------------------------------------------------
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IEnumerable<User>> Get()
+        public async Task<ActionResult<IEnumerable<User>>> Get()
         {
             var users = await _service.GetAllAsync();
-            return users;
+            return Ok(users);
         }
 
-
-        // ----------------------
-        // 1️⃣ GET : Récupérer tous les utilisateurs
-        // ----------------------
+        // ---------------------------------------------------------------------
+        // 2️⃣ GET : Récupérer un utilisateur par son ID
+        // ---------------------------------------------------------------------
         [HttpGet("{id}")]
-        public async Task<User> GetById(Guid Id)
+        public async Task<ActionResult<User>> GetById(Guid id)
         {
-            var users = await _service.GetById(Id);
-            return users;
+            var user = await _service.GetById(id);
+            if (user == null) return NotFound();
+
+            return Ok(user);
         }
 
-        // ----------------------
-        // 2️⃣ POST : Créer un nouvel utilisateur (Standard)
-        // ----------------------
+        // ---------------------------------------------------------------------
+        // 3️⃣ POST : Création unique, sécurisée et transactionnelle (Outbox)
+        // ---------------------------------------------------------------------
         [HttpPost]
-        [AllowAnonymous] // 👈 AJOUTEZ CETTE LIGNE ICI temporairement pour créer vos tests
+        [AllowAnonymous] // 👈 Pratique pour vos tests locaux sans token complet au début
         public async Task<IActionResult> Post([FromBody] CreateUserDto dto)
         {
-            await _service.CreateAsync(dto.Name, dto.Email, dto.Password);
-            return StatusCode(201);
-        }
-
-        // ----------------------
-        // 3️⃣ POST : Créer avec notification RabbitMQ
-        // ----------------------
-        [HttpPost("create")]
-        [AllowAnonymous]
-        public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto)
-        {
+            // 1. Sauvegarde en base de données (Via votre service de domaine)
             await _service.CreateAsync(dto.Name, dto.Email, dto.Password);
 
-            // ✅ Ajout du 'await' pour corriger le warning CS4014
-            await _publisher.PublishUserCreated(dto.Email);
+            // 2. Publication via l'Outbox MassTransit 
+            // Si la base de données crash, le message n'est pas envoyé à RabbitMQ. 
+            // Si la base réussit, MassTransit garantit l'envoi dès que RabbitMQ revient à la vie.
+            await _publishEndpoint.Publish(new MyCompany.Shared.Events.UserCreatedEvent
+            {
+                Email = dto.Email,
+                Name = dto.Name
+            });
 
-            return Ok(new { message = $"Utilisateur créé : {dto.Email}" });
+            // Retourne un vrai code 201 Created (Le code 21 que vous aviez écrit n'existe pas en HTTP)
+            return StatusCode(StatusCodes.Status201Created); // 201 Created
         }
-
-        // ----------------------
+        
+        // ---------------------------------------------------------------------
         // 4️⃣ PUT : Mettre à jour un utilisateur
-        // ----------------------
+        // ---------------------------------------------------------------------
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateUserDto dto)
         {

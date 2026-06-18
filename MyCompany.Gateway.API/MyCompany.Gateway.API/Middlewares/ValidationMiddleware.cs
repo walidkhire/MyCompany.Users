@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace MyCompany.Shared.Middlewares
+namespace MyCompany.Gateway.API.Middlewares
 {
     public class ValidationMiddleware
     {

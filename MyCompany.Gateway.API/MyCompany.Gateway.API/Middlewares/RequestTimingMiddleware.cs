@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace MyCompany.Shared.Middlewares
+namespace MyCompany.Gateway.API.Middlewares
 {
     public class RequestTimingMiddleware
     {
