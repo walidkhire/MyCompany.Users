@@ -1,0 +1,56 @@
+﻿@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider AuthProvider
+@inject MyCompany.Frontend.Web.Services.AuthService AuthService
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="">🏢 MyCompany Platform</a>
+
+        <div class="collapse navbar-collapse d-flex justify-content-between">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">🎯 Dashboard</NavLink>
+                </li>
+
+                <AuthorizeView>
+                    <Authorized>
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="orders-history">📦 Mes Commandes</NavLink>
+                        </li>
+                    </Authorized>
+                </AuthorizeView>
+            </ul>
+
+            <div class="d-flex align-items-center">
+                <AuthorizeView>
+                    <Authorized>
+                        <span class="text-light me-3 small">👋 @context.User.Identity?.Name</span>
+                        <button class="btn btn-sm btn-outline-danger shadow-sm" @onclick="Logout">🚪 Déconnexion</button>
+                    </Authorized>
+
+                    <NotAuthorized>
+                        <ul class="navbar-nav d-flex flex-row gap-2">
+                            <li class="nav-item">
+                                <NavLink class="nav-link px-2" href="login">
+                                    🔑 Se connecter
+                                </NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink class="nav-link px-2" href="register">
+                                    👤 Créer un compte
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </div>
+        </div>
+    </div>
+</nav>
+
+@code {
+    private async Task Logout()
+    {
+        await AuthService.LogoutAsync();
+        ((MyCompany.Frontend.Web.Security.CustomAuthStateProvider)AuthProvider).NotifyUserLogout();
+    }
+}

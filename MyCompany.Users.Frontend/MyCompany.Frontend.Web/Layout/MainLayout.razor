@@ -1,0 +1,13 @@
+﻿@inherits LayoutComponentBase
+
+<div class="main-wrapper">
+    @* 💡 Note : Si NavMenu fait un appel HTTP au démarrage, il peut bloquer l'UI *@
+    <NavMenu />
+
+    <div class="container my-4">
+        @Body @* 👈 C'est ici que Home.razor va s'injecter *@
+    </div>
+</div>
+
+@* 🟢 Ton conteneur de notifications global *@
+<ToastContainer />

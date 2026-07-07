@@ -82,17 +82,27 @@ builder.Services.AddAuthorization();
 
 
 // Etape 1 🔹 Configuration des CORS
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("MonFrontendPolicy", policy =>
+//    {
+//        policy.WithOrigins("http://localhost:7282", "http://localhost:3000") // 🔹 Remplacez par les URLs exactes de vos Frontends (Angular, React...)
+//              .AllowAnyMethod()  // Autorise GET, POST, PUT, DELETE
+//              .AllowAnyHeader()  // Autorise les en-têtes personnalisés (dont l'en-tête Authorization pour votre JWT !)
+//              .AllowCredentials(); // Autorise les cookies de session si nécessaire
+//    });
+//});
+
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MonFrontendPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:7282", "http://localhost:3000") // 🔹 Remplacez par les URLs exactes de vos Frontends (Angular, React...)
-              .AllowAnyMethod()  // Autorise GET, POST, PUT, DELETE
-              .AllowAnyHeader()  // Autorise les en-têtes personnalisés (dont l'en-tête Authorization pour votre JWT !)
-              .AllowCredentials(); // Autorise les cookies de session si nécessaire
+        policy.AllowAnyOrigin() // En démo locale, on peut autoriser tout
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
-
 
 var app = builder.Build();
 

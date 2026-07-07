@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MyCompany.Orders.API.Controllers; // Ajuste selon ton namespace
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ using MyCompany.Orders.Infrastructure.HttpClients;
 using MyCompany.Orders.Infrastructure.Repositories;
 using System;
 using System.Text;
+using MyCompany.Orders.API.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -103,17 +105,17 @@ builder.Services.AddHttpClient<IUsersClient, UsersClient>(client =>
 })
 .AddStandardResilienceHandler(options =>
 {
-    // 1️⃣ Timeout d'une tentative : On le descend à 3 secondes (au lieu de 10s par défaut)
-    // L'application n'attendra pas indéfiniment si Users.API est bloqué.
-    options.AttemptTimeout.Timeout = TimeSpan.FromSeconds(3);
+    // 1️⃣ Timeout d'une tentative unique : 10 secondes suffisent largement en local
+    options.AttemptTimeout.Timeout = TimeSpan.FromSeconds(10);
 
-    // 2️⃣ Circuit Breaker : On analyse les échecs sur une fenêtre de 30 secondes.
-    // 30s est bien supérieur au double de 3s (6s), respectant ainsi la règle stricte.
+    // 2️⃣ Circuit Breaker
     options.CircuitBreaker.SamplingDuration = TimeSpan.FromSeconds(30);
+    options.CircuitBreaker.FailureRatio = 0.5;
+    options.CircuitBreaker.BreakDuration = TimeSpan.FromSeconds(30);
 
-    // Reste de vos configurations excellentes :
-    options.CircuitBreaker.FailureRatio = 0.5; // Déclenche si 50% des requêtes échouent
-    options.CircuitBreaker.BreakDuration = TimeSpan.FromSeconds(30); // Circuit ouvert pendant 30s
+    // 3️⃣ 🔥 LA SOLUTION : Augmenter le timeout TOTAL de la requête (Retry inclus)
+    // Par défaut, Polly bloque l'opération globale très vite. Donnons-lui du mou.
+    options.TotalRequestTimeout.Timeout = TimeSpan.FromSeconds(45);
 });
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
@@ -143,6 +145,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
+
+
+// 🔹 Enregistrement de ton validateur FluentValidation
+builder.Services.AddScoped<IValidator<CreateOrderRequest>, CreateOrderRequestValidator>();
 
 var app = builder.Build();
 

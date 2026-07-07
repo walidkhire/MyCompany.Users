@@ -37,6 +37,8 @@
     <Project Path="MyCompany.Users/MyCompany.Users.Infrastructure/MyCompany.Users.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/FrontEnd/">
+    <Project Path="MyCompany.Users.Frontend/MyCompany.Frontend.Web/MyCompany.Frontend.Web.csproj" />
     <Project Path="MyCompany.Users.Frontend/MyCompany.Users.Frontend/MyCompany.Users.Frontend.csproj" Id="bcb0ebe4-e04d-4201-a9c0-8937ec2d784e" />
   </Folder>
+  <Folder Name="/FrontEnd/Handlers/" />
 </Solution>

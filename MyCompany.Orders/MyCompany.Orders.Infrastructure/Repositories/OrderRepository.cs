@@ -19,8 +19,8 @@ namespace MyCompany.Orders.Infrastructure.Repositories
             _db.Orders.Add(order);
             await _db.SaveChangesAsync();
         }
-
-        public async Task<IEnumerable<Order>> GetByUserAsync(Guid userId)
+   
+        public async Task<IEnumerable<Order>> GetByUserIdAsync(Guid userId)
         {
             return await _db.Orders.Where(o => o.UserId == userId).ToListAsync();
         }

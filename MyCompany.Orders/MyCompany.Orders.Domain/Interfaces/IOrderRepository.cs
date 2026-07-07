@@ -10,6 +10,6 @@ namespace MyCompany.Orders.Domain.Interfaces
     public interface IOrderRepository
     {
         Task AddAsync(Order order);
-        Task<IEnumerable<Order>> GetByUserAsync(Guid userId);
+        Task<IEnumerable<Order>> GetByUserIdAsync(Guid userId);
     }
 }

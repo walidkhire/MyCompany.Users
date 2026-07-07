@@ -1,0 +1,45 @@
+﻿@using MyCompany.Frontend.Web.Models
+@using MyCompany.Frontend.Web.Services
+@inject ToastService ToastService
+@implements IDisposable
+
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 9999; max-width: 350px; margin-top: 70px; min-height: 50px;">
+    @foreach (var toast in ToastService.Toasts)
+    {
+        <div class="toast show align-items-center text-white bg-@GetBootstrapClass(toast.Type) border-0 shadow mb-2" role="alert">
+            <div class="d-flex">
+                <div class="toast-body fw-bold">
+                    @toast.Message
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" @onclick="() => ToastService.RemoveToast(toast)"></button>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        // 🔹 On s'abonne à l'événement en forçant le rafraîchissement sur le thread UI
+        ToastService.OnToastChanged += RefreshUI;
+    }
+
+    private void RefreshUI()
+    {
+        // 💡 Force Blazor à redessiner le composant de manière sécurisée
+        InvokeAsync(StateHasChanged);
+    }
+
+    private string GetBootstrapClass(ToastType type) => type switch
+    {
+        ToastType.Success => "success",
+        ToastType.Danger => "danger",
+        ToastType.Warning => "warning",
+        _ => "info"
+    };
+
+    public void Dispose()
+    {
+        ToastService.OnToastChanged -= RefreshUI;
+    }
+}

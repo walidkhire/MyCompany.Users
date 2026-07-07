@@ -51,7 +51,7 @@ namespace MyCompany.Users.API.Controllers
         // ---------------------------------------------------------------------
         // 3️⃣ POST : Création unique, sécurisée et transactionnelle (Outbox)
         // ---------------------------------------------------------------------
-        [HttpPost]
+        [HttpPost("register")] // 👈 Devient : POST api/users/register
         [AllowAnonymous] // 👈 Pratique pour vos tests locaux sans token complet au début
         public async Task<IActionResult> Post([FromBody] CreateUserDto dto)
         {

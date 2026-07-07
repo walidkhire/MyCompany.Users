@@ -1,0 +1,115 @@
+﻿@page "/login"
+@using MyCompany.Frontend.Web.Models
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject MyCompany.Frontend.Web.Services.ToastService Toast
+
+@* Ajuste les deux lignes ci-dessous selon les namespaces réels de tes fichiers *@
+@inject MyCompany.Frontend.Web.Services.AuthService AuthService
+@inject Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider AuthProvider
+@* Note : Injecte ici ton service de gestion d'état d'authentification si tu en as un, ex: @inject AuthenticationStateProvider AuthStateProvider *@
+
+<PageTitle>Connexion - MyCompany</PageTitle>
+
+<div class="row justify-content-center align-items-center" style="min-height: 75vh;">
+    <div class="col-md-5 col-lg-4">
+        <div class="card shadow-lg border-0 rounded-3 p-4">
+
+            <div class="text-center mb-4">
+                <span class="fs-1">🏢</span>
+                <h3 class="fw-bold text-dark mt-2">Connexion Sécurisée</h3>
+                <p class="text-muted">Accédez à votre espace MyCompany</p>
+            </div>
+
+            <EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
+                <DataAnnotationsValidator />
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Adresse Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted">📧</span>
+                        <InputText @bind-Value="loginModel.Email" class="form-control border-start-0 shadow-sm ps-0" placeholder="jean.dupont@exemple.com" />
+                    </div>
+                    <ValidationMessage For="@(() => loginModel.Email)" class="text-danger small mt-1" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Mot de passe</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted">🔒</span>
+                        <InputText @bind-Value="loginModel.Password" type="password" class="form-control border-start-0 shadow-sm ps-0" placeholder="••••••••" />
+                    </div>
+                    <ValidationMessage For="@(() => loginModel.Password)" class="text-danger small mt-1" />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm mb-3" disabled="@isSubmitting">
+                    @if (isSubmitting)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        <span>Validation...</span>
+                    }
+                    else
+                    {
+                        <span>Se connecter 🚀</span>
+                    }
+                </button>
+
+                <div class="text-center mt-3">
+                    <span class="text-muted small">Nouveau sur la plateforme ?</span>
+                    <a href="/register" class="text-primary small fw-bold text-decoration-none ms-1">Créer un compte</a>
+                </div>
+            </EditForm>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginModel loginModel = new();
+    private bool isSubmitting = false;
+
+    private async Task HandleLogin()
+    {
+        isSubmitting = true;
+
+        try
+        {
+            // 1. Appel de ton API via la route de ta Gateway YARP
+            var response = await Http.PostAsJsonAsync("auths/login", new
+            {
+                loginModel.Email,
+                loginModel.Password
+            });
+
+            // Dans le bloc HandleLogin() de ton Login.razor :
+            if (response.IsSuccessStatusCode)
+            {
+                var loginResult = await response.Content.ReadFromJsonAsync<LoginResponseDto>();
+
+                if (loginResult != null && !string.IsNullOrEmpty(loginResult.Token))
+                {
+                    // On passe l'email, le mot de passe ET le token pour le localStorage
+                    await AuthService.LoginAsync(loginModel.Email, loginModel.Password, loginResult.Token);
+
+                    // On prévient l'UI Blazor
+                    ((Security.CustomAuthStateProvider)AuthProvider).NotifyUserAuthentication(loginResult.Token);
+
+                    Toast.ShowSuccess("Connexion réussie ! 👋");
+                    Navigation.NavigateTo("/orders-history");
+                }
+            }
+            else
+            {
+                Toast.ShowError("Identifiants invalides ou problème d'authentification.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Toast.ShowError($"Erreur réseau : {ex.Message}");
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+}

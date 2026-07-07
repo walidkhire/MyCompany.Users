@@ -1,0 +1,118 @@
+﻿@page "/register"
+@using MyCompany.Frontend.Web.Models
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject MyCompany.Frontend.Web.Services.ToastService Toast
+
+<PageTitle>Créer un compte - MyCompany</PageTitle>
+
+<div class="row justify-content-center align-items-center" style="min-height: 75vh;">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-3 p-4">
+            <div class="text-center mb-4">
+                <span class="fs-1">🏢</span>
+                <h3 class="fw-bold text-dark mt-2">Créer un compte</h3>
+                <p class="text-muted">Rejoignez l'écosystème microservices MyCompany</p>
+            </div>
+
+            <EditForm Model="@registerModel" OnValidSubmit="HandleRegister">
+                <DataAnnotationsValidator />
+
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label class="form-label fw-semibold">Prénom</label>
+                        <InputText @bind-Value="registerModel.FirstName" class="form-control shadow-sm" placeholder="Jean" />
+                        <ValidationMessage For="@(() => registerModel.FirstName)" class="text-danger small mt-1" />
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label fw-semibold">Nom</label>
+                        <InputText @bind-Value="registerModel.LastName" class="form-control shadow-sm" placeholder="Dupont" />
+                        <ValidationMessage For="@(() => registerModel.LastName)" class="text-danger small mt-1" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Adresse Email</label>
+                    <InputText @bind-Value="registerModel.Email" class="form-control shadow-sm" placeholder="nom@exemple.com" />
+                    <ValidationMessage For="@(() => registerModel.Email)" class="text-danger small mt-1" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Mot de passe</label>
+                    <InputText @bind-Value="registerModel.Password" type="password" class="form-control shadow-sm" placeholder="••••••••" />
+                    <ValidationMessage For="@(() => registerModel.Password)" class="text-danger small mt-1" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Confirmer le mot de passe</label>
+                    <InputText @bind-Value="registerModel.ConfirmPassword" type="password" class="form-control shadow-sm" placeholder="••••••••" />
+                    <ValidationMessage For="@(() => registerModel.ConfirmPassword)" class="text-danger small mt-1" />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm mb-3" disabled="@isSubmitting">
+                    @if (isSubmitting)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        <span>Inscription en cours...</span>
+                    }
+                    else
+                    {
+                        <span>S'inscrire 🚀</span>
+                    }
+                </button>
+
+                <div class="text-center mt-3">
+                    <span class="text-muted small">Vous avez déjà un compte ?</span>
+                    <a href="/login" class="text-primary small fw-bold text-decoration-none ms-1">Se connecter</a>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private RegisterModel registerModel = new();
+    private bool isSubmitting = false;
+
+    private async Task HandleRegister()
+    {
+        isSubmitting = true;
+
+        try
+        {
+            // 1. Assure-toi que la route "users/register" correspond bien à ton fichier de config YARP
+            // On fusionne le Prénom et le Nom pour remplir la propriété "Name" attendue par ton API
+            var response = await Http.PostAsJsonAsync("users/register", new
+            {
+                Name = $"{registerModel.FirstName} {registerModel.LastName}", // 👈 Correspond à dto.Name
+                Email = registerModel.Email,                                   // 👈 Correspond à dto.Email
+                Password = registerModel.Password                              // 👈 Correspond à dto.Password
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                Toast.ShowSuccess("Compte créé avec succès ! Vous pouvez maintenant vous connecter.");
+                Navigation.NavigateTo("/login");
+            }
+            else
+            {
+                // On lit le contenu, si c'est vide on affiche le code HTTP (ex: 400, 404, 500)
+                var errorReason = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(errorReason))
+                {
+                    errorReason = $"Code erreur HTTP: {(int)response.StatusCode} ({response.ReasonPhrase})";
+                }
+                Toast.ShowError($"Échec de l'inscription : {errorReason}");
+            }
+        }
+        catch (Exception ex)
+        {
+            // Si le serveur est éteint ou inaccessible, c'est ce bloc qui intercepte
+            Toast.ShowError($"Erreur réseau ou serveur inaccessible : {ex.Message}");
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
+    }
+}
